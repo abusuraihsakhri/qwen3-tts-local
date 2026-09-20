@@ -1,0 +1,5 @@
+# Install a CUDA-enabled PyTorch build appropriate for your system before this file.
+# qwen-tts depends on PyTorch/torchaudio, but the correct CUDA wheel is platform-specific.
+qwen-tts==0.1.1
+gradio==6.28.0
+soundfile==0.13.1
