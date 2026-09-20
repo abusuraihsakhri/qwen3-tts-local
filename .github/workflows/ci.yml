@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Install lightweight CI dependency
+        run: python -m pip install --disable-pip-version-check gradio==6.28.0
+
+      - name: Compile
+        run: python -m py_compile qwen3-tts-local.py
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: UI smoke test
+        run: python tests/smoke_ui.py
