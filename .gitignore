@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated audio and local model/cache data
+*.wav
+*.mp3
+outputs/
+models/
+.cache/
